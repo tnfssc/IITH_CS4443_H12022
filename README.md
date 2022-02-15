@@ -4,7 +4,7 @@
 
 ## Team Members
 
-- Akash Deep Singh
+- [Akashdeep Singh Kalra](https://github.com/adsk3003)
 - Ravi Teja
 - Rohit Reddy Komatreddi
 - Seetha Sahiti
