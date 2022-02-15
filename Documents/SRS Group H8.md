@@ -68,11 +68,26 @@ cases. Some performance requirements and design constraints are also given. Sect
 
 ### 2.4 Principal Actors
 
+The principal actors in the software are:
+
+- hotel manager
+- user/customer
+- frontend service
+- backend service
+- database service
+
 ### General Constraints
+
+- HMS needs internet connectivity to be able to work.
+- HMS can only be used for the hotel it is configured for.
 
 ### Assumptions and Dependencies
 
+- A full working HMS is dependent on the availability of the internet.
+
 ## 3 Specific Requirements
+
+We describe the functional requirements by giving various use cases.
 
 ### 3.1 Functional Requirements
 
@@ -80,10 +95,20 @@ cases. Some performance requirements and design constraints are also given. Sect
 
 ### 3.2 Performance Requirements
 
+- The web app should be able to run on the last 10 versions of the latest version of Chromium based browsers like Chrome, Brave, Edge etc.
+- The web app should be responsive enough to run on mobile phones.
+- The frontend service should be able to run on the latest LTS version of Node.js.
+- Server software should be able to run on the latest version of Flask.
+
 ### 3.3 Design Constraints
+
+- All the data is stored in the database.
+- The authentication is done using JWT, a state-of-the-art security technology.
 
 ### 3.4 External Interface Requirements
 
 ## 4 Future Extensions
 
-## 5 Appendix
+- @TODO
+
+## 5 Appendices
