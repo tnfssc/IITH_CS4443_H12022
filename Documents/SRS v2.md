@@ -26,6 +26,7 @@ We describe what features are in the scope of the software and what are not in t
 - Predictions based on data.
 - Profits or losses based on data.
 - Services to be provided during the clients' stay.
+- Room sharing by multiple individual customers is not in scope of the software.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
