@@ -250,7 +250,7 @@ We describe the functional requirements by giving various use cases.
   1. Click `Customer manager` in the navigation bar.
   2. Select the concerned customer.
   3. Click on `Edit customer` button.
-  4. Enter the following details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
+  4. Edit the details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
   5. Click on `Save` button.
   6. Toast message `Customer updated successfully`.
   7. Redirect to the updated customer.
