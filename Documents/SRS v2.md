@@ -1,12 +1,12 @@
-# Software Requirement Specification ([SRS](https://en.wikipedia.org/wiki/Software_requirements_specification)) for Hotel Management System (HMS)
+# Software Requirement Specification ([SRS](https://en.wikipedia.org/wiki/Software_requirements_specification)) for Hotel Reservation System (HRS)
 
 ## 1 Introduction
 
 ### 1.1 Purpose
 
-Hotel Management System (HMS) is a software system that is intended to help the hotel staff and managers to keep account of the rooms and reservations.
+Hotel Reservation System (HRS) is a software system that is intended to help the hotel staff and managers to keep account of the rooms and reservations.
 
-This document is meant to delineate the features of HMS and its requirements, to serve as a guide to the developers on one hand and a software validation document for the prospective client on the other.
+This document is meant to delineate the features of HRS and its requirements, to serve as a guide to the developers on one hand and a software validation document for the prospective client on the other.
 
 ### 1.2 Scope
 
@@ -31,7 +31,7 @@ We describe what features are in the scope of the software and what are not in t
 
 #### Acronyms and Abbreviations
 
-- **HMS**: Hotel Management System
+- **HRS**: Hotel Reservation System
 - **SRS**: Software Requirement Specification
 - **WWW**: World Wide Web
 - **API**: Application Programming Interface
@@ -62,13 +62,13 @@ cases. Some performance requirements and design constraints are also given. Sect
 
 ### 2.1 Product Perspective
 
-HMS is aimed towards hotel staff, managers and also potential customers. The software is expected to be used by hotel staff and managers to keep track of the rooms and reservations. It is also expected to be used by potential customers to book a room. HMS should be user-friendly and easy to use. It needs to be reliable and highly secure.
+HRS is aimed towards hotel staff, managers and also potential customers. The software is expected to be used by hotel staff and managers to keep track of the rooms and reservations. It is also expected to be used by potential customers to book a room. HRS should be user-friendly and easy to use. It needs to be reliable and highly secure.
 
-HMS is intended to be used with internet connection. Server software should needs to be deployed for the webapps to work. The webapps for the hotel staff and managers should be accessible from anywhere. The webapps for the clients should be accessible from anywhere.
+HRS is intended to be used with internet connection. Server software should needs to be deployed for the webapps to work. The webapps for the hotel staff and managers should be accessible from anywhere. The webapps for the clients should be accessible from anywhere.
 
 ### 2.2 Product Functions
 
-HMS should support the following use cases:
+HRS should support the following use cases:
 
 | Principal actor | Use cases | Description |
 | --- | --- | --- |
@@ -101,13 +101,9 @@ HMS should support the following use cases:
 |||
 || Available rooms | List of available rooms |
 || View room | View a room details |
+|| Reserve room | Reserve a room (summary level) |
 || View reservations | View the reservations of the customer |
 || Cancel reservation | Cancel a reservation |
-|||
-|| Reserve room | Reserve a room (summary level) |
-|| Hold reservation | Hold room for reservation |
-|| Pay for reservation | Pay for a holded reservation |
-|| Confirm reservation | Confirm a reservation after payment |
 
 ### 2.3 User Characteristics
 
@@ -123,18 +119,244 @@ The principal actors in the software are:
 
 ### 2.5 General Constraints
 
-- HMS needs internet connectivity to be able to work.
-- HMS can only be used for the hotel it is configured for.
+- HRS needs internet connectivity to be able to work.
+- HRS can only be used for the hotel it is configured for.
 
 ### 2.6 Assumptions and Dependencies
 
-- A full working HMS is dependent on the availability of the internet.
+- A full working HRS is dependent on the availability of the internet.
 
 ## 3 Specific Requirements
 
 We describe the functional requirements by giving various use cases.
 
 ### 3.1 Functional Requirements
+
+#### Use Case 0: Installation
+
+- **Primary Actor:** `unknown`
+- **Pre Condition:** `null`
+- **Main Scenario:**
+  - `unknown` deploys all the services required for the software to work.
+
+#### Use Case 1: Manager Login
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Internet is available.
+- **Main Scenario:**
+  1. Manager opens the manager portal webapp.
+  2. Webapp asks the manager to login using Google account.
+  3. Manager logs in using Google account.
+  4. Webapp fetches the manager's details.
+  5. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 3(a) Authorization fails.
+    - Retry.
+  - 4(a) Manager details do not exist.
+    - Logout. Toast message `401 Forbidden`.
+
+#### Use Case 2: Add Room
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in.
+- **Main Scenario:**
+  1. Click `Room manager` in the navigation bar.
+  2. Click on `Add room` button.
+  3. Enter the following details of the room: `Room number`, `Suite`, `Room capacity`.
+  4. Click on `Save` button.
+  5. Toast message `Room added successfully`.
+  6. Redirect to newly created room.
+- **Alternate Scenario:**
+  - 4(a) Room number already exists.
+    - Toast message `Room number already exists`.
+
+#### Use Case 3: Edit Room
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the room exists.
+- **Main Scenario:**
+  1. Click `Room manager` in the navigation bar.
+  2. Select the concerned room.
+  3. Click on `Edit room` button.
+  4. Enter the following details of the room: `Suite`, `Room capacity`.
+  5. Click on `Save` button.
+  6. Toast message `Room updated successfully`.
+  7. Redirect to the updated room.
+- **Alternate Scenario:**
+  - 5(a) Unknown error.
+    - Toast message `Unknown error`.
+- @TODO: improve main scenario 4, alternate scenario
+
+#### Use Case 4: Delete Room
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the room exists.
+- **Main Scenario:**
+  1. Click `Room manager` in the navigation bar.
+  2. Select the concerned room.
+  3. Click on `Delete room` button.
+  4. Click on `Yes` button.
+- **Alternate Scenario:**
+  - 4(a) Room does not exist.
+    - Toast message `Room does not exist`.
+
+#### Use Case 5: Room Status
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in.
+- **Main Scenario:**
+  1. Click `Room manager` in the navigation bar.
+  2. Select the concerned room.
+  3. Redirect to the room details.
+- **Alternate Scenario:**
+  - 2(a) Room does not exist.
+    - Toast message `Room does not exist`.
+
+#### Use Case 6: Currently Available Rooms
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in.
+- **Main Scenario:**
+  1. Click `Room manager` in the navigation bar.
+  2. Click on `Currently available rooms` button.
+  3. Redirect to the list of currently available rooms.
+  4. Filter using various parameters like `Suite`, `Room capacity`, `Check-in date`, `Check-out date`, etc.
+- **Alternate Scenario:**
+  - `null`
+
+#### Use Case 7: Add Customer
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Click on `Add customer` button.
+  3. Enter the following details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
+  4. Click on `Save` button.
+  5. Toast message `Customer added successfully`.
+  6. Redirect to newly created customer.
+- **Alternate Scenario:**
+  - 4(a) Email already exists.
+    - Toast message `Email already exists`.
+  - 4(b) Phone number already exists.
+    - Toast message `Phone number already exists`.
+
+#### Use Case 8: Edit Customer
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the customer exists.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Select the concerned customer.
+  3. Click on `Edit customer` button.
+  4. Enter the following details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
+  5. Click on `Save` button.
+  6. Toast message `Customer updated successfully`.
+  7. Redirect to the updated customer.
+- **Alternate Scenario:**
+  - 5(a) Email already exists.
+    - Toast message `Email already exists`.
+  - 5(b) Phone number already exists.
+    - Toast message `Phone number already exists`.
+  - 5(c) Customer does not exist.
+    - Toast message `Customer does not exist`.
+
+#### Use Case 9: Delete Customer
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the customer exists.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Select the concerned customer.
+  3. Click on `Delete customer` button.
+  4. Click on `Yes` button.
+  5. Toast message `Customer deleted successfully`.
+  6. Redirect to the `Customer manager`.
+- **Alternate Scenario:**
+  - 4(a) Customer does not exist.
+    - Toast message `Customer does not exist`.
+
+#### Use Case 10: Add Reservation
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Select the concerned customer.
+  3. Click on `Add reservation` button.
+  4. Enter the following parameters for [room availability](#use-case-10-add-reservation) search: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`. @TODO: refer to room availability service. Also, guest names.
+  5. Select a room from the list.
+  6. Click on `Save` button.
+  7. Toast message `Reservation added successfully`.
+  8. Redirect to the customer's details.
+- **Alternate Scenario:**
+  - 6(a) Room is unavailable.
+    - Toast message `Room is unavailable at given check-in and check-out dates`.
+
+#### Use Case 11: Edit Reservation
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Select the concerned customer.
+  3. Select the concerned reservation.
+  4. Click on `Edit reservation` button.
+  5. Edit the following attributes: `Check-in date`, `Check-out date`.
+  6. Click on `Save` button.
+  7. Toast message `Reservation updated successfully`.
+  8. Redirect to the customer's details.
+- **Alternate Scenario:**
+  - 6(a) Room is unavailable.
+    - Toast message `Room is unavailable at given check-in and check-out dates`.
+  - 6(b) Reservation is uneditable. (e.g. check-out date is in the past)
+    - Toast message `Reservation is uneditable`.
+
+#### Use Case 12: Cancel Reservation
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Click `Customer manager` in the navigation bar.
+  2. Select the concerned customer.
+  3. Select the concerned reservation.
+  4. Click on `Cancel reservation` button.
+  5. Click on `Yes` button.
+  6. Toast message `Reservation cancelled successfully`.
+  7. Redirect to the customer's details.
+- **Alternate Scenario:**
+  - 5(a) Reservation does not exist.
+    - Toast message `Reservation does not exist`.
+  - 5(b) Reservation is uncancelable. (e.g. check-in date is in the past)
+    - Toast message `Reservation is uncancelable`.
+
+#### Use Case 13: Add cost
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Click `Customer manager` (or `Room manager`) in the navigation bar.
+  2. Select the concerned customer (or room).
+  3. Select the concerned reservation.
+  4. Click on `Add cost` button.
+  5. Enter the following details: `Cost type`, `Cost amount`, `Cost date`.
+  6. Click on `Save` button.
+  7. Toast message `Cost added successfully`.
+  8. Redirect to the customer's details (or room details).
+- **Alternate Scenario:**
+  - 6(a) Reservation check-out date is in the past.
+    - Toast message `Cost cannot be added. Already checked-out.`
+
+#### Use Case 14: Total price
+
+- **Primary Actor:** Manager
+- **Pre Condition:** Manager is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Click `Customer manager` (or `Room manager`) in the navigation bar.
+  2. Select the concerned customer (or room).
+  3. Select the concerned reservation.
+  4. Click on `Total price` button.
+  5. Toast message `Total price: 🤑<total price>`.
 
 ### 3.2 Performance Requirements
 
