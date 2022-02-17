@@ -3,6 +3,7 @@
 ## Customer portal
 
 - login
+- enter user details
 - room availability -> available rooms
 
 - reserve room
