@@ -62,6 +62,10 @@ cases. Some performance requirements and design constraints are also given. Sect
 
 ### 2.1 Product Perspective
 
+HMS is aimed towards hotel staff, managers and also potential customers. The software is expected to be used by hotel staff and managers to keep track of the rooms and reservations. It is also expected to be used by potential customers to book a room. HMS should be user-friendly and easy to use. It needs to be reliable and highly secure.
+
+HMS is intended to be used with internet connection. Server software should needs to be deployed for the webapps to work. The webapps for the hotel staff and managers should be accessible from anywhere. The webapps for the clients should be accessible from anywhere.
+
 ### 2.2 Product Functions
 
 ### 2.3 User Characteristics
