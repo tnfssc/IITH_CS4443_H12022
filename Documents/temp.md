@@ -11,6 +11,7 @@
   - pay
   - reservation -> confirm reservation
 - reservation -> get reservation
+- reservation -> edit reservation
 - reservation -> cancel reservation
 
 ## Manager Portal
@@ -25,11 +26,11 @@
 - room
   - add room
   - edit room
-  - cancel room
+  - cancel room( or remove room?)
 - customer
   - add customer
   - edit customer
-  - cancel customer
+  - cancel customer(why do we need this?)
 - reservation -> add baki paisa
 
 ## Room Availability Service
@@ -42,6 +43,8 @@
   - returns (available or not and list of reservations)
 
 ## Reservation Service
+
+Should we add guest names in the params?
 
 - Hold Reservation
   - params (room id, no. of people, check-in date, check-out date, customer id)
@@ -70,7 +73,7 @@
   - send emails to customers
 - Cancel Reservation
   - params (reservation id)
-  - check if check-in date is in the past
+  - check if check-in date is in the past(past or future?)
   - returns (success)
   - send email to customer
 - Edit Reservation
