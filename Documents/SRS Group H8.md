@@ -70,6 +70,9 @@ HMS is intended to be used with internet connection. Server software should need
 
 ### 2.3 User Characteristics
 
+- The hotel manager should be familiar with the hotel's rooms and their attributes.
+- He should be aware of the related terminology.
+
 ### 2.4 Principal Actors
 
 The principal actors in the software are:
@@ -80,12 +83,12 @@ The principal actors in the software are:
 - backend service
 - database service
 
-### General Constraints
+### 2.5 General Constraints
 
 - HMS needs internet connectivity to be able to work.
 - HMS can only be used for the hotel it is configured for.
 
-### Assumptions and Dependencies
+### 2.6 Assumptions and Dependencies
 
 - A full working HMS is dependent on the availability of the internet.
 
