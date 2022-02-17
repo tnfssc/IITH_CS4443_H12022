@@ -5,7 +5,7 @@
 ## Team Members
 
 - [Akashdeep Singh Kalra](https://github.com/adsk3003)
-- Ravi Teja
-- Rohit Reddy Komatreddi
-- Seetha Sahiti
+- [Ravi Teja Namani](https://github.com/ravinamani15)
+- [Rohit Reddy K](https://github.com/rohitreddy-k)
+- [Seetha Sahiti](https://github.com/SeethaSahithi)
 - [Sharath Chandra Sheripally](https://github.com/tnfssc)
