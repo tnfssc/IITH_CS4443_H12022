@@ -17,6 +17,7 @@
 
 - login
 - room availability -> room availability
+- room availability -> available rooms
 - reservation
   - add reservation
   - cancel reservation
