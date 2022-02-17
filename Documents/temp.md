@@ -75,8 +75,7 @@
   - returns (success)
   - send email to customer
 - Edit Reservation
-  - params (reservation id, room id, no. of people, check-in date, check-out date, customer id)
-  - check if room is available
+  - params (reservation id, no. of people, check-in date, check-out date, customer id)
   - returns (success or error)
   - send email to customer
 - Get Reservation
