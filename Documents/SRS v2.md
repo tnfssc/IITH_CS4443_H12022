@@ -97,6 +97,7 @@ HRS should support the following use cases:
 | --- | --- | --- |
 | Customer | Customer Login | Authentication of the customer |
 || Enter details | Enter the details of the customer |
+|| Edit details | Edit the details of the customer |
 ||||
 || Available rooms | List of available rooms |
 || View room | View a room details |
@@ -356,6 +357,110 @@ We describe the functional requirements by giving various use cases.
   3. Select the concerned reservation.
   4. Click on `Total price` button.
   5. Toast message `Total price: 🤑<total price>`.
+
+#### Use Case 15: Customer Login
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Internet connection is available.
+- **Main Scenario:**
+  1. Customer opens the customer portal webapp.
+  2. Webapp asks the customer to login using Google account.
+  3. Customer logs in using Google account.
+  4. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 3(a) Authorization fails.
+    - Retry.
+
+#### Use Case 16: Enter Details
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in.
+- **Main Scenario:**
+  1. Customer enters the following details: `First name`, `Last name`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
+  2. Click on `Save` button.
+  3. Toast message `Customer details saved successfully`.
+  4. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 3(a) Email already exists.
+    - Toast message `Email already exists`.
+  - 3(b) Phone number already exists.
+    - Toast message `Phone number already exists`.
+
+#### Use Case 17: Edit Details
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in.
+- **Main Scenario:**
+  1. Customer edits the details: `First name`, `Last name`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
+  2. Click on `Save` button.
+  3. Toast message `Customer details saved successfully`.
+  4. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 3(b) Phone number already exists.
+    - Toast message `Phone number already exists`.
+
+#### Use Case 18: Available Rooms
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in.
+- **Main Scenario:**
+  1. Customer enters the following details: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`.
+  2. Click on `Search rooms` button.
+  3. Show the available rooms and their details.
+- **Alternate Scenario:**
+  - 1(a) Check-in date is in the past.
+    - Toast message `Check-in date is in the past`.
+  - 1(b) Check-out date is in the past.
+    - Toast message `Check-out date is in the past`.
+  - 1(c) Check-in date is after check-out date.
+    - Toast message `Check-in date is after check-out date`.
+  - 2(a) No rooms available.
+    - Toast message `No rooms available at given parameters`.
+
+#### Use Case 19: Reserve Room
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in and the room exists.
+- **Main Scenario:**
+  1. After selecting the room, the customer clicks on the `Reserve` button.
+  2. The customer is redirected to a payment portal
+  3. Toast message `Reservation added successfully`.
+  4. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 1(a) Room is unavailable.
+    - Toast message `Room is unavailable at given check-in and check-out dates`.
+  - 2(a) Payment fails.
+    - Toast message `Payment failed`.
+  - 2(b) Payment is cancelled.
+    - Toast message `Payment cancelled`.
+
+#### Use Case 20: View Reservation
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Customer clicks on the one of the reservations.
+  2. The customer is redirected to the reservation details.
+- **Alternate Scenario:**
+  - 1(a) Reservation does not exist.
+    - Toast message `Reservation does not exist`.
+
+#### Use Case 21: Cancel Reservation
+
+- **Primary Actor:** Customer
+- **Pre Condition:** Customer is logged in and the reservation exists.
+- **Main Scenario:**
+  1. Customer clicks on the one of the reservations.
+  2. The customer clicks on `Cancel reservation` button.
+  3. The customer clicks on the `Yes` button.
+  4. Toast message `Reservation cancelled successfully`.
+  5. Customer's refund is initiated.
+  6. Redirect to the dashboard.
+- **Alternate Scenario:**
+  - 1(a) Reservation does not exist.
+    - Toast message `Reservation does not exist`.
+  - 2(a) Reservation is uncancelable. (e.g. check-in date is in the past)
+    - Toast message `Reservation is uncancelable`.
 
 ### 3.2 Performance Requirements
 
