@@ -450,8 +450,10 @@ We describe the functional requirements by giving various use cases.
   1. The customer clicks on the `Reserve` button.
   2. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
   3. The customer is redirected to a payment portal
-  4. Toast message `Reservation added successfully`.
-  5. Redirect to the dashboard.
+  4. The customer enters the payment details: `Card number`, `Expiry date`, `CVV`, `Cardholder name`.
+  5. Click on `Pay` button.
+  6. Toast message `Reservation added successfully`.
+  7. Redirect to the dashboard.
 - **Alternate Scenario:**
   - Network failure.
     - Show a network error message.
