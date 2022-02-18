@@ -203,7 +203,7 @@ We describe the functional requirements by giving various use cases.
 - **Main Scenario:**
   1. Click `Room manager` in the navigation bar.
   2. Select the concerned room.
-  3. Redirect to the room details.
+  3. Show the room details: `Room number`, `Suite`, `Room price`, `Estimated price`, `Floor number`, `Room capacity`.
 - **Alternate Scenario:**
   - Network failure.
     - Show a network error message.
@@ -404,9 +404,7 @@ We describe the functional requirements by giving various use cases.
 - **Alternate Scenario:**
   - Network failure.
     - Show a network error message.
-  - 3(a) Email already exists.
-    - Toast message `Email already exists`.
-  - 3(b) Phone number already exists.
+  - 3(a) Phone number already exists.
     - Toast message `Phone number already exists`.
 
 #### Use Case 17: Edit Details
@@ -431,7 +429,7 @@ We describe the functional requirements by giving various use cases.
 - **Main Scenario:**
   1. Customer enters the following details: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`.
   2. Click on `Search rooms` button.
-  3. Show the available rooms and their details.
+  3. Show the available rooms and their details: `Room number`, `Suite`, `Room price`, `Estimated price`, `Floor number`, `Room capacity`.
 - **Alternate Scenario:**
   - Network failure.
     - Show a network error message.
