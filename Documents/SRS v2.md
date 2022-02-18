@@ -231,7 +231,7 @@ We describe the functional requirements by giving various use cases.
   1. Click `Customer manager` in the navigation bar.
   2. Click on `Add customer` button.
   3. Enter the following details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
-  4. Enter the guests' details of the customer: `Number of adults`, `Number of children`, `Number of infants` and `Their names`.
+  4. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
   5. Click on `Save` button.
   6. Toast message `Customer added successfully`.
   7. Redirect to newly created customer.
@@ -450,7 +450,7 @@ We describe the functional requirements by giving various use cases.
 - **Pre Condition:** Customer is logged in and the room exists.
 - **Main Scenario:**
   1. After selecting the room, the customer clicks on the `Reserve` button.
-  2. Enter the guests' details of the customer: `Number of adults`, `Number of children`, `Number of infants` and `Their names`.
+  2. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
   3. The customer is redirected to a payment portal
   4. Toast message `Reservation added successfully`.
   5. Redirect to the dashboard.
