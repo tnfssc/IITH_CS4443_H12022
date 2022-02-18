@@ -445,9 +445,9 @@ We describe the functional requirements by giving various use cases.
 #### Use Case 19: Reserve Room
 
 - **Primary Actor:** Customer
-- **Pre Condition:** Customer is logged in and the room exists.
+- **Pre Condition:** Customer is logged in and the room is selected.
 - **Main Scenario:**
-  1. After selecting the room, the customer clicks on the `Reserve` button.
+  1. The customer clicks on the `Reserve` button.
   2. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
   3. The customer is redirected to a payment portal
   4. Toast message `Reservation added successfully`.
