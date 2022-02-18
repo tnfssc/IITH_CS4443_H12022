@@ -73,56 +73,54 @@ HRS should support the following use cases:
 
 | Principal actor | Use cases | Description |
 | --- | --- | --- |
-|| Installation | Installation of the software |
-| --- | --- | --- |
 | Manager | Manager Login | Authentication of the manager |
 ||||
 || Add room | Add a room to the hotel |
 || Edit room | Edit a room in the hotel |
 || Delete room | Delete a room from the hotel |
-||||
 || Room status | Checking the availability and status of a room |
 || Currently available rooms | List of currently available rooms |
-||||
 || Add customer | Add a customer to the hotel |
 || Edit customer | Edit a customer in the hotel |
 || Delete customer | Delete a customer from the hotel |
-||||
 || Add reservation | Add a reservation to the hotel |
 || Edit reservation | Edit a reservation |
 || Cancel reservation | Cancel a reservation |
-||||
 || Add cost | Add cost to a reservation |
 || Total price | Calculate the total price of a reservation |
-| --- | --- | --- |
+||||
 | Customer | Customer Login | Authentication of the customer |
 || Enter details | Enter the details of the customer |
 || Edit details | Edit the details of the customer |
-||||
 || Available rooms | List of available rooms |
 || View room | View a room details |
 || Reserve room | Reserve a room (summary level) |
 || View reservations | View the reservations of the customer |
 || Cancel reservation | Cancel a reservation |
 
-### 2.3 User Characteristics
+### 2.3 Manager Characteristics
 
 - The hotel manager should be familiar with the hotel's rooms and their attributes.
-- He should be aware of the related terminology.
+- He should also be aware of the related terminology.
 
-### 2.4 Principal Actors
+### 2.4 Customer Characteristics
+
+- The customer should be familiar with using a web browser.
+- He should also be able to understand the basic terminology related.
+
+### 2.5 Principal Actors
 
 The principal actors in the software are:
 
 - hotel manager
 - customer
 
-### 2.5 General Constraints
+### 2.6 General Constraints
 
 - HRS needs internet connectivity to be able to work.
 - HRS can only be used for the hotel it is configured for.
 
-### 2.6 Assumptions and Dependencies
+### 2.7 Assumptions and Dependencies
 
 - A full working HRS is dependent on the availability of the internet.
 
@@ -131,13 +129,6 @@ The principal actors in the software are:
 We describe the functional requirements by giving various use cases.
 
 ### 3.1 Functional Requirements
-
-#### Use Case 0: Installation
-
-- **Primary Actor:** `unknown`
-- **Pre Condition:** `null`
-- **Main Scenario:**
-  - `unknown` deploys all the services required for the software to work.
 
 #### Use Case 1: Manager Login
 
@@ -150,6 +141,8 @@ We describe the functional requirements by giving various use cases.
   4. Webapp fetches the manager's details.
   5. Redirect to the dashboard.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 3(a) Authorization fails.
     - Retry.
   - 4(a) Manager details do not exist.
@@ -167,6 +160,8 @@ We describe the functional requirements by giving various use cases.
   5. Toast message `Room added successfully`.
   6. Redirect to newly created room.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 4(a) Room number already exists.
     - Toast message `Room number already exists`.
 
@@ -183,9 +178,8 @@ We describe the functional requirements by giving various use cases.
   6. Toast message `Room updated successfully`.
   7. Redirect to the updated room.
 - **Alternate Scenario:**
-  - 5(a) Unknown error.
-    - Toast message `Unknown error`.
-- @TODO: improve main scenario 4, alternate scenario
+  - Network failure.
+    - Show a network error message.
 
 #### Use Case 4: Delete Room
 
@@ -197,6 +191,8 @@ We describe the functional requirements by giving various use cases.
   3. Click on `Delete room` button.
   4. Click on `Yes` button.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 4(a) Room does not exist.
     - Toast message `Room does not exist`.
 
@@ -207,8 +203,10 @@ We describe the functional requirements by giving various use cases.
 - **Main Scenario:**
   1. Click `Room manager` in the navigation bar.
   2. Select the concerned room.
-  3. Redirect to the room details.
+  3. Show the room details: `Room number`, `Suite`, `Room price`, `Estimated price`, `Floor number`, `Room capacity`.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 2(a) Room does not exist.
     - Toast message `Room does not exist`.
 
@@ -222,7 +220,8 @@ We describe the functional requirements by giving various use cases.
   3. Redirect to the list of currently available rooms.
   4. Filter using various parameters like `Suite`, `Room capacity`, `Check-in date`, `Check-out date`, etc.
 - **Alternate Scenario:**
-  - `null`
+  - Network failure.
+    - Show a network error message.
 
 #### Use Case 7: Add Customer
 
@@ -232,10 +231,13 @@ We describe the functional requirements by giving various use cases.
   1. Click `Customer manager` in the navigation bar.
   2. Click on `Add customer` button.
   3. Enter the following details of the customer: `First name`, `Last name`, `Email`, `Phone number`, `Address`, `City`, `State`, `Zip code`, `Country`.
-  4. Click on `Save` button.
-  5. Toast message `Customer added successfully`.
-  6. Redirect to newly created customer.
+  4. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
+  5. Click on `Save` button.
+  6. Toast message `Customer added successfully`.
+  7. Redirect to newly created customer.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 4(a) Email already exists.
     - Toast message `Email already exists`.
   - 4(b) Phone number already exists.
@@ -254,6 +256,8 @@ We describe the functional requirements by giving various use cases.
   6. Toast message `Customer updated successfully`.
   7. Redirect to the updated customer.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 5(a) Email already exists.
     - Toast message `Email already exists`.
   - 5(b) Phone number already exists.
@@ -273,6 +277,8 @@ We describe the functional requirements by giving various use cases.
   5. Toast message `Customer deleted successfully`.
   6. Redirect to the `Customer manager`.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 4(a) Customer does not exist.
     - Toast message `Customer does not exist`.
 
@@ -284,12 +290,14 @@ We describe the functional requirements by giving various use cases.
   1. Click `Customer manager` in the navigation bar.
   2. Select the concerned customer.
   3. Click on `Add reservation` button.
-  4. Enter the following parameters for [room availability](#use-case-10-add-reservation) search: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`. @TODO: refer to room availability service. Also, guest names.
+  4. Enter the following parameters for room availability search: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`.
   5. Select a room from the list.
   6. Click on `Save` button.
   7. Toast message `Reservation added successfully`.
   8. Redirect to the customer's details.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 6(a) Room is unavailable.
     - Toast message `Room is unavailable at given check-in and check-out dates`.
 
@@ -307,6 +315,8 @@ We describe the functional requirements by giving various use cases.
   7. Toast message `Reservation updated successfully`.
   8. Redirect to the customer's details.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 6(a) Room is unavailable.
     - Toast message `Room is unavailable at given check-in and check-out dates`.
   - 6(b) Reservation is uneditable. (e.g. check-out date is in the past)
@@ -325,6 +335,8 @@ We describe the functional requirements by giving various use cases.
   6. Toast message `Reservation cancelled successfully`.
   7. Redirect to the customer's details.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 5(a) Reservation does not exist.
     - Toast message `Reservation does not exist`.
   - 5(b) Reservation is uncancelable. (e.g. check-in date is in the past)
@@ -344,6 +356,8 @@ We describe the functional requirements by giving various use cases.
   7. Toast message `Cost added successfully`.
   8. Redirect to the customer's details (or room details).
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 6(a) Reservation check-out date is in the past.
     - Toast message `Cost cannot be added. Already checked-out.`
 
@@ -357,6 +371,11 @@ We describe the functional requirements by giving various use cases.
   3. Select the concerned reservation.
   4. Click on `Total price` button.
   5. Toast message `Total price: 🤑<total price>`.
+- **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
+  - 4(a) Reservation does not exist.
+    - Toast message `Reservation does not exist`.
 
 #### Use Case 15: Customer Login
 
@@ -368,6 +387,8 @@ We describe the functional requirements by giving various use cases.
   3. Customer logs in using Google account.
   4. Redirect to the dashboard.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 3(a) Authorization fails.
     - Retry.
 
@@ -381,9 +402,9 @@ We describe the functional requirements by giving various use cases.
   3. Toast message `Customer details saved successfully`.
   4. Redirect to the dashboard.
 - **Alternate Scenario:**
-  - 3(a) Email already exists.
-    - Toast message `Email already exists`.
-  - 3(b) Phone number already exists.
+  - Network failure.
+    - Show a network error message.
+  - 3(a) Phone number already exists.
     - Toast message `Phone number already exists`.
 
 #### Use Case 17: Edit Details
@@ -396,6 +417,8 @@ We describe the functional requirements by giving various use cases.
   3. Toast message `Customer details saved successfully`.
   4. Redirect to the dashboard.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 3(b) Phone number already exists.
     - Toast message `Phone number already exists`.
 
@@ -406,8 +429,10 @@ We describe the functional requirements by giving various use cases.
 - **Main Scenario:**
   1. Customer enters the following details: `Check-in date`, `Check-out date`, `Suite`, `Number of guests`.
   2. Click on `Search rooms` button.
-  3. Show the available rooms and their details.
+  3. Show the available rooms and their details: `Room number`, `Suite`, `Room price`, `Estimated price`, `Floor number`, `Room capacity`.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 1(a) Check-in date is in the past.
     - Toast message `Check-in date is in the past`.
   - 1(b) Check-out date is in the past.
@@ -420,13 +445,18 @@ We describe the functional requirements by giving various use cases.
 #### Use Case 19: Reserve Room
 
 - **Primary Actor:** Customer
-- **Pre Condition:** Customer is logged in and the room exists.
+- **Pre Condition:** Customer is logged in and the room is selected.
 - **Main Scenario:**
-  1. After selecting the room, the customer clicks on the `Reserve` button.
-  2. The customer is redirected to a payment portal
-  3. Toast message `Reservation added successfully`.
-  4. Redirect to the dashboard.
+  1. The customer clicks on the `Reserve` button.
+  2. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
+  3. The customer is redirected to a payment portal
+  4. The customer enters the payment details: `Card number`, `Expiry date`, `CVV`, `Cardholder name`.
+  5. Click on `Pay` button.
+  6. Toast message `Reservation added successfully`.
+  7. Redirect to the dashboard.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 1(a) Room is unavailable.
     - Toast message `Room is unavailable at given check-in and check-out dates`.
   - 2(a) Payment fails.
@@ -442,6 +472,8 @@ We describe the functional requirements by giving various use cases.
   1. Customer clicks on the one of the reservations.
   2. The customer is redirected to the reservation details.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 1(a) Reservation does not exist.
     - Toast message `Reservation does not exist`.
 
@@ -457,6 +489,8 @@ We describe the functional requirements by giving various use cases.
   5. Customer's refund is initiated.
   6. Redirect to the dashboard.
 - **Alternate Scenario:**
+  - Network failure.
+    - Show a network error message.
   - 1(a) Reservation does not exist.
     - Toast message `Reservation does not exist`.
   - 2(a) Reservation is uncancelable. (e.g. check-in date is in the past)
@@ -471,6 +505,7 @@ We describe the functional requirements by giving various use cases.
 
 ### 3.3 Design Constraints
 
+- Internet connection is mandatory.
 - All the data is stored in the database.
 - The authentication is done using JWT, a state-of-the-art security technology.
 
