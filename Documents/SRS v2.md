@@ -450,8 +450,8 @@ We describe the functional requirements by giving various use cases.
   1. The customer clicks on the `Reserve` button.
   2. Enter the guests' details of the customer: `Number of guests`, and for each guest, select `Age group` and enter `Full name`.
   3. The customer is redirected to a payment portal
-  4. The customer enters the payment details: `Card number`, `Expiry date`, `CVV`, `Cardholder name`.
-  5. Click on `Pay` button.
+  4. Choose the preferred payment method among the available options
+  5. Complete the Payment
   6. Toast message `Reservation added successfully`.
   7. Redirect to the dashboard.
 - **Alternate Scenario:**
@@ -459,9 +459,9 @@ We describe the functional requirements by giving various use cases.
     - Show a network error message.
   - 1(a) Room is unavailable.
     - Toast message `Room is unavailable at given check-in and check-out dates`.
-  - 2(a) Payment fails.
+  - 5(a) Payment fails.
     - Toast message `Payment failed`.
-  - 2(b) Payment is cancelled.
+  - 5(b) Payment is cancelled.
     - Toast message `Payment cancelled`.
 
 #### Use Case 20: View Reservation
