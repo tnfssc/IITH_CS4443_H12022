@@ -74,32 +74,30 @@ HRS should support the following use cases:
 | Principal actor | Use cases | Description |
 | --- | --- | --- |
 || Installation | Installation of the software |
-|||
-|||
+| --- | --- | --- |
 | Manager | Manager Login | Authentication of the manager |
-|||
+||||
 || Add room | Add a room to the hotel |
 || Edit room | Edit a room in the hotel |
 || Delete room | Delete a room from the hotel |
-|||
+||||
 || Room status | Checking the availability and status of a room |
 || Currently available rooms | List of currently available rooms |
-|||
+||||
 || Add customer | Add a customer to the hotel |
 || Edit customer | Edit a customer in the hotel |
 || Delete customer | Delete a customer from the hotel |
-|||
+||||
 || Add reservation | Add a reservation to the hotel |
 || Edit reservation | Edit a reservation |
 || Cancel reservation | Cancel a reservation |
-|||
+||||
 || Add cost | Add cost to a reservation |
 || Total price | Calculate the total price of a reservation |
-|||
-|||
+| --- | --- | --- |
 | Customer | Customer Login | Authentication of the customer |
 || Enter details | Enter the details of the customer |
-|||
+||||
 || Available rooms | List of available rooms |
 || View room | View a room details |
 || Reserve room | Reserve a room (summary level) |
