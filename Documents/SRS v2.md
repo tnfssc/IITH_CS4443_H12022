@@ -14,15 +14,16 @@ We describe what features are in the scope of the software and what are not in t
 
 #### In Scope
 
-- Managing the rooms and their attributes of a single hotel, which would include the room number, room type, room status, room price, room capacity, room amenities, room availability, room reservation.
+- Managing the rooms and their attributes of a single hotel, which would include the room number, room type, room status, room price, room capacity, room availability, room reservation.
 - Computation of the total price of a room reservation.
-- Giving alerts to the hotel staff and managers when a room is booked or cancelled.
-- Staff and manager portal with authentication.
-- User/Client portal with authentication.
+- Manager portal with authentication.
+- Customer portal with authentication.
+- Giving alerts to the customers when a room is booked or cancelled.
 
 #### Out of Scope
 
 - Actual check-in and check-out of a room is not in scope of the software.
+- Multiple Managers for the hotel.
 - Predictions based on data.
 - Profits or losses based on data.
 - Services to be provided during the clients' stay.
@@ -34,38 +35,28 @@ We describe what features are in the scope of the software and what are not in t
 
 - **HRS**: Hotel Reservation System
 - **SRS**: Software Requirement Specification
-- **WWW**: World Wide Web
-- **API**: Application Programming Interface
-- **REST**: Representational State Transfer
 - **WebApp**: Web Application
-- **UI**: User Interface
-- **UX**: User Experience
+
 
 #### Definitions
 
-- **API Call**: A RESTful call to an API.
-- **API Endpoint**: A RESTful endpoint.
-- **RESTful API**: An API that supports request response.
 - **Dashboard**: A web application that provides a dashboard for the hotel staff and managers.
-- **Client**: A user of the hotel (customer).
-- **Hotel Staff**: A person who works for the hotel.
+- **Customer**: A user of the hotel.
+- **Hotel Manager (Manager)**: A person who manages everything in the hotel.
 
-### 1.4 References
 
-- @TODO: SRS Group H8
-
-### 1.5 Overview
+### 1.4 Overview
 
 The rest of this SRS is organized as follows: Section 2 gives an overall description of the software. It gives what level of proficiency is expected of the user, some general constraints while making the software and some assumptions and dependencies that are assumed. Section 3 gives specific requirements which the software is expected to deliver. Functional requirements are given by various use
-cases. Some performance requirements and design constraints are also given. Section 4 gives some possible future extensions of the system.
+cases. Some performance requirements and design constraints are also given. Section 4 gives some possible future extensions of the system. Section 5 gives the user screens
 
 ## 2 Overall Description
 
 ### 2.1 Product Perspective
 
-HRS is aimed towards hotel staff, managers and also potential customers. The software is expected to be used by hotel staff and managers to keep track of the rooms and reservations. It is also expected to be used by potential customers to book a room. HRS should be user-friendly and easy to use. It needs to be reliable and highly secure.
+HRS is aimed towards hotel managers and potential customers. The software is expected to be used by hotel managers to keep track of the rooms and reservations. It is also expected to be used by potential customers to book a room. HRS should be user-friendly and easy to use. It needs to be reliable and highly secure.
 
-HRS is intended to be used with internet connection. Server software should needs to be deployed for the webapps to work. The webapps for the hotel staff and managers should be accessible from anywhere. The webapps for the clients should be accessible from anywhere.
+HRS is intended to be used with internet connection. Server software should needs to be deployed for the webapps to work. The webapps for the hotel managers should be accessible from anywhere. The webapps for the clients should be accessible from anywhere.
 
 ### 2.2 Product Functions
 
@@ -74,7 +65,6 @@ HRS should support the following use cases:
 | Principal actor | Use cases | Description |
 | --- | --- | --- |
 | Manager | Manager Login | Authentication of the manager |
-||||
 || Add room | Add a room to the hotel |
 || Edit room | Edit a room in the hotel |
 || Delete room | Delete a room from the hotel |
@@ -112,8 +102,8 @@ HRS should support the following use cases:
 
 The principal actors in the software are:
 
-- hotel manager
-- customer
+- Hotel Manager
+- Customer
 
 ### 2.6 General Constraints
 
@@ -500,19 +490,60 @@ We describe the functional requirements by giving various use cases.
 
 - The web app should be able to run on the last 10 versions of the latest version of Chromium based browsers like Chrome, Brave, Edge etc.
 - The web app should be responsive enough to run on mobile phones.
-- The frontend service should be able to run on the latest LTS version of Node.js.
-- Server software should be able to run on the latest version of Flask.
+- All actions are to be completed reasonably fast.
 
 ### 3.3 Design Constraints
 
 - Internet connection is mandatory.
+- Manager and Customers should have Google account.
 - All the data is stored in the database.
 - The authentication is done using JWT, a state-of-the-art security technology.
 
-### 3.4 External Interface Requirements
-
 ## 4 Future Extensions
 
-- @TODO
+- One of the possible extensions can be the inclusion of a hotel owner and multiple managers.
+- In future extensions, room services and other services provided in the hotel can be added to the HRS to make the management completely online and improve the experience of the customer.
 
-## 5 Appendices
+## 5 Appendix
+
+### 5.1 User Screens:
+#### Manager Portal Screens:
+![Frame 1](https://user-images.githubusercontent.com/69867256/154903836-51fe0d88-2204-4eb6-83da-a5bee8d2e50c.png)                        
+
+Manager Dashboard: Contains chart with statistics abouts rooms and customers
+
+![Frame 2](https://user-images.githubusercontent.com/69867256/154903857-963ba400-452d-4ea9-a1d4-5ffcbee46924.png)
+
+Navigation Bar 
+
+![Frame 4](https://user-images.githubusercontent.com/69867256/154903893-bebe4f52-50bc-4e3b-8fb5-bb1aa8582466.png)                          
+
+Room Manager					                                         
+
+![Frame 5](https://user-images.githubusercontent.com/69867256/154903927-f31b9a11-0dc2-403a-9978-ccb20a1569bb.png)
+
+Customer Manager
+
+![Frame 6](https://user-images.githubusercontent.com/69867256/154903956-7d4a6d24-722c-4515-9998-69e0a2d66f8e.png)                             
+
+Room Details page					                                     
+
+![Frame 7](https://user-images.githubusercontent.com/69867256/154904514-92423d27-82f1-4159-af80-1b000bf33100.png)
+
+Customer Details page
+
+
+#### Customer Portal Screens:
+
+![Frame 1](https://user-images.githubusercontent.com/69867256/154904010-ecef14cb-b51a-4d8d-be65-58c92f91e4b8.png) 
+
+Customer Dashboard: Contains reservations of the customer and option to book a room
+
+![Frame 2](https://user-images.githubusercontent.com/69867256/154904024-21b4308e-bb50-4df2-a33d-6d5fd0ef5f27.png)
+
+Navigation Bar
+
+![Frame 3](https://user-images.githubusercontent.com/69867256/154904049-139e9546-4ed9-4ef5-b6ac-5f1ab34ef3e0.png)
+
+Profile and Logout
+
