@@ -39,13 +39,17 @@ managers.
 
 ## Architecture Design
 
-### 2.1 Architecture 1: The _________ Model
+### 2.1 Architecture 1: The Monolithic Model
+
+In this model every function of the portal exists in a single core service, which has to exist in a single codebase. The same service is running on multiple servers and each call is passed to appropriate server using the Load balancer.
 
 ### 2.2 Architecture 2: The Microservices architecture model
 
 In this model each service is a separate codebase. They can be deployed independently, and can be updated separately without rebuilding the whole application. The services within the model communicate with each other using well defined APIs, and internal implementation of each service is hidden from other service.
 
 In this model the client communicates with the API Gateway. Instead of calling the services directly, client calls the API gateway, which forwards the call to appropriate service on the back end.
+
+In our case, the customer/manager (from their respective portal) is accessing the API gateway, and depending on their selections, the calls are forwarded to the different services like reserve room, query reservation etc.
 
 ### 2.3 Comparison of the two architectures
 
