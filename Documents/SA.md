@@ -39,16 +39,29 @@ managers.
 
 ## Architecture Design
 
-### 2.1 Architecture 1: The _________ Model
+### 2.1 Architecture 1: The Monolithic Architecture Model
 
-### 2.2 Architecture 2: The _________ Model
+![Monolithic](./monolithic.png)
+
+### 2.2 Architecture 2: The Microservices Architecture Model
+
+![Microservices](./microservices.png)
 
 ### 2.3 Comparison of the two architectures
 
 Here we compare the architectures with respect to various quality attributes.
 
-| Criteria | Architecture 1 | Architecture 2 |
+| Criteria | Monolithic | Microservices |
 | -------- | ------------- | ------------- |
-| Quality | _______________ | _______________ |
+| Quality | Good | Great |
+| Complexity | Low | High |
+| Scalability | Low | High |
+| Security | Low | High |
+| Reliability | Low | High |
+| Maintainability | Low | High |
+| Portability | High | Low |
+| Ease of Installation | Easy | Difficult |
 
 ## Final Architecture of HMS
+
+![Microservices](./microservices.png)
