@@ -43,6 +43,8 @@ managers.
 
 In this model every function of the portal exists in a single core service, which has to exist in a single codebase. The same service is running on multiple servers and each call is passed to appropriate server using the Load balancer.
 
+In our case, the customer/manager is directly interacting with the core service (which contains all the processes like reserve room, query reservation etc.), and core service is reading/writing to the database.
+
 ### 2.2 Architecture 2: The Microservices architecture model
 
 In this model each service is a separate codebase. They can be deployed independently, and can be updated separately without rebuilding the whole application. The services within the model communicate with each other using well defined APIs, and internal implementation of each service is hidden from other service.
