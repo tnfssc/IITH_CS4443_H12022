@@ -35,13 +35,17 @@ various quality attributes, and then choose the most appropriate one, which is o
 - Dashboard: A web application that provides a dashboardfor the hotel staff and
 managers.
 - Customer: A user of the hotel.
-- Hotel Manager (Manager): A person who manages everythingin the hotel
+- Hotel Manager (Manager): A person who manages everything in the hotel
 
 ## Architecture Design
 
 ### 2.1 Architecture 1: The _________ Model
 
-### 2.2 Architecture 2: The _________ Model
+### 2.2 Architecture 2: The Microservices architecture model
+
+In this model each service is a separate codebase. They can be deployed independently, and can be updated separately without rebuilding the whole application. The services within the model communicate with each other using well defined APIs, and internal implementation of each service is hidden from other service.
+
+In this model the client communicates with the API Gateway. Instead of calling the services directly, client calls the API gateway, which forwards the call to appropriate service on the back end.
 
 ### 2.3 Comparison of the two architectures
 
