@@ -90,7 +90,7 @@ async handler(function_name, ...params):
 
 ```py
 @app.post('/details')
-async handler(user: firebase_admin.auth.UserRecord, details: Customer):
+async handler(user: firebase_admin.auth.UserRecord, details: Partial[Customer] | None) -> Customer:
   try:
     data = # Logic
   except:
@@ -102,7 +102,7 @@ async handler(user: firebase_admin.auth.UserRecord, details: Customer):
 
 ```py
 @app.delete('/details/{user_id}')
-async handler(user: firebase_admin.auth.UserRecord, user_id: str):
+async handler(user: firebase_admin.auth.UserRecord, user_id: str) -> None:
   try:
     data = # Logic
   except:
@@ -116,25 +116,7 @@ async handler(user: firebase_admin.auth.UserRecord, user_id: str):
 
 ```py
 @app.get('/rooms/{room_id}')
-async handler(user: firebase_admin.auth.UserRecord, room_id: str):
-  try:
-    data = # Logic
-  except:
-    return json({'error': 'Internal Server Error'}, status=500)
-  return json(data)
-```
-
-> Available Rooms
-
-```py
-class AvailableRoomsParams(BaseModel):
-  check_in: str
-  check_out: str
-  guests: int
-  suite: str
-
-@app.get('/rooms/available')
-async handler(user: firebase_admin.auth.UserRecord, params: AvailableRoomsParams):
+async handler(user: firebase_admin.auth.UserRecord, room_id: str) -> Room:
   try:
     data = # Logic
   except:
@@ -145,13 +127,8 @@ async handler(user: firebase_admin.auth.UserRecord, params: AvailableRoomsParams
 > Add/Edit Room
   
 ```py
-class RoomParams(BaseModel):
-  suite: str
-  room_number: int
-  capacity: int
-
 @app.post('/rooms')
-async handler(user: firebase_admin.auth.UserRecord, params: RoomParams):
+async handler(user: firebase_admin.auth.UserRecord, params: Partial[Room]) -> Room:
   try:
     data = # Logic
   except:
@@ -163,19 +140,7 @@ async handler(user: firebase_admin.auth.UserRecord, params: RoomParams):
 
 ```py
 @app.delete('/rooms/{room_id}')
-async handler(user: firebase_admin.auth.UserRecord, room_id: str):
-  try:
-    data = # Logic
-  except:
-    return json({'error': 'Internal Server Error'}, status=500)
-  return json(data)
-```
-
-> Room status
-
-```py
-@app.get('/rooms/{room_id}/status')
-async handler(user: firebase_admin.auth.UserRecord, room_id: str):
+async handler(user: firebase_admin.auth.UserRecord, room_id: str) -> None:
   try:
     data = # Logic
   except:
@@ -189,7 +154,7 @@ async handler(user: firebase_admin.auth.UserRecord, room_id: str):
 
 ```py
 @app.get('/reservations/{reservation_id}')
-async handler(user: firebase_admin.auth.UserRecord, reservation_id: str):
+async handler(user: firebase_admin.auth.UserRecord, reservation_id: str) -> Reservation:
   try:
     data = await db.find_one({'_id': reservation_id})
   except:
@@ -201,7 +166,7 @@ async handler(user: firebase_admin.auth.UserRecord, reservation_id: str):
 
 ```py
 @app.post('/reservations')
-async handler(user: firebase_admin.auth.UserRecord, params: Reservation):
+async handler(user: firebase_admin.auth.UserRecord, params: Partial[Reservation]) -> Reservation:
   try:
     data = # Logic
   except:
@@ -213,7 +178,7 @@ async handler(user: firebase_admin.auth.UserRecord, params: Reservation):
 
 ```py
 @app.put('/reservations/{reservation_id}')
-async handler(user: firebase_admin.auth.UserRecord, params: Reservation):
+async handler(user: firebase_admin.auth.UserRecord, params: Partial[Reservation]) -> Reservation:
   try:
     data = # Logic
   except:
@@ -225,7 +190,7 @@ async handler(user: firebase_admin.auth.UserRecord, params: Reservation):
 
 ```py
 @app.delete('/reservations/{reservation_id}')
-async handler(user: firebase_admin.auth.UserRecord, reservation_id: str):
+async handler(user: firebase_admin.auth.UserRecord, reservation_id: str) -> None:
   try:
     data = await db.delete_one({'_id': reservation_id})
   except:
@@ -237,7 +202,7 @@ async handler(user: firebase_admin.auth.UserRecord, reservation_id: str):
 
 ```py
 @app.post('/reservations/{reservation_id}/cost')
-async handler(user: firebase_admin.auth.UserRecord, reservation_id: str, cost: int):
+async handler(user: firebase_admin.auth.UserRecord, reservation_id: str, cost: int) -> Reservation:
   try:
     data = # Logic
   except:
@@ -249,7 +214,31 @@ async handler(user: firebase_admin.auth.UserRecord, reservation_id: str, cost: i
 
 ```py
 @app.get('/reservations/{reservation_id}/cost')
-async handler(user: firebase_admin.auth.UserRecord, reservation_id: str):
+async handler(user: firebase_admin.auth.UserRecord, reservation_id: str) -> int:
+  try:
+    data = # Logic
+  except:
+    return json({'error': 'Internal Server Error'}, status=500)
+  return json(data)
+```
+
+> Available Rooms
+
+```py
+@app.get('/rooms/available')
+async handler(user: firebase_admin.auth.UserRecord, params: Partial[Reservation]) -> List[Room]:
+  try:
+    data = # Logic
+  except:
+    return json({'error': 'Internal Server Error'}, status=500)
+  return json(data)
+```
+
+> Room status
+
+```py
+@app.get('/rooms/{room_id}/status')
+async handler(user: firebase_admin.auth.UserRecord, room_id: str) -> bool:
   try:
     data = # Logic
   except:
