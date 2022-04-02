@@ -234,11 +234,11 @@ async handler(user: firebase_admin.auth.UserRecord, params: Partial[Reservation]
   return json(data)
 ```
 
-> Room status
+> Room availability
 
 ```py
-@app.get('/rooms/{room_id}/status')
-async handler(user: firebase_admin.auth.UserRecord, room_id: str) -> bool:
+@app.get('/rooms/{room_id}/available')
+async handler(user: firebase_admin.auth.UserRecord, params: Partial[Reservation]) -> bool:
   try:
     data = # Logic
   except:
